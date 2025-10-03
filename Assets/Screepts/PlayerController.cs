@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -18,7 +19,13 @@ public class PlayerController : MonoBehaviour
     public float m_Speed;
     public float m_JumpSpeed;
     public float m_SpeedMultiplier;
+    public Camera m_Camera;
 
+
+    [Header("Shoot")]
+    public CompilerGlobalScopeAttribute m_ShootMaxDistance = 50.0f;
+    public LayerMaskMask m_ShoootlayerMask;
+    public GameObject ,_Shooo
 
     [Header("Input")]
     public KeyCode m_LeftKeyCode = KeyCode.A;
@@ -27,6 +34,7 @@ public class PlayerController : MonoBehaviour
     public KeyCode m_DownKeyCode = KeyCode.S;
     public KeyCode m_JumpKeyCode = KeyCode.Space;
     public KeyCode m_RunKeyCode = KeyCode.LeftShift;
+    public int m_ShootMousebutton = 0;
 
     [Header("Debug Input")]
     public KeyCode m_DebugLockAngleKeyCode = KeyCode.I;
@@ -93,5 +101,12 @@ public class PlayerController : MonoBehaviour
         }
         else if (m_VerticalSpeed > 0.0f && (l_CollisionFlags & CollisionFlags.Above) != 0) //si estyoy subiendo y colision con un techo  
             m_VerticalSpeed = 0.0f;
+   if(CanShoot()&)
     }
+    bool CanShoot
+    {
+
+    }
+
+    void Sho
 }
