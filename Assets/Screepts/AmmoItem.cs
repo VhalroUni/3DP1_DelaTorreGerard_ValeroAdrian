@@ -11,6 +11,9 @@ public class AmmoItem : Item
     public override bool CanPick()
     {
         //falta implementar que se pueda recoger cuando le falten balas y to la paranoia
+        if (m_AmmoCount == 120) //Max de balas
+            return false;
+        else
         return true;
     }
 }

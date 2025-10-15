@@ -11,6 +11,9 @@ public class LifeItem : Item
     public override bool CanPick()
     {
         //falta implementar que se pueda recoger cuando le falten vidas y to la paranoia
-        return true;
+        if (m_LifeCount == 120) //Max de vida
+            return false;
+        else
+            return true;
     }
 }

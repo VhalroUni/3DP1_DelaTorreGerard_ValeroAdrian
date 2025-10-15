@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
     public float m_ShootMaxDistance = 50.0f;
     public LayerMask m_ShootLayerMask;
     public GameObject m_ShootParticles;
+    public float m_MaxAmmo = 100;
+    public float m_AmmoLoader = 10;
 
 
     [Header("Input")]
