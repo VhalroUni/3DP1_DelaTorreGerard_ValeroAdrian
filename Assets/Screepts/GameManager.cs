@@ -9,6 +9,11 @@ public class GameManager : MonoBehaviour
     public Transform m_DestroyObjects;
     public int m_Score = 0;
     public Text m_ScoreText;
+    public int m_Life = 0;
+    public Text m_LifeText;
+    public int m_Shield = 0;
+    public Text m_ShieldText;
+
 
     private void Awake()
     {
@@ -53,6 +58,27 @@ public class GameManager : MonoBehaviour
     void UpdateScoreHUD()
     {
         if (m_ScoreText != null)
-            m_ScoreText.text = " " + m_Score;
+            m_ScoreText.text = "Score: " + m_Score;
     }
+    public void AddLife(int value)
+    {
+        m_Life += value;
+        UpdateLifeHUD();
+    }
+    void UpdateLifeHUD()
+    {
+        if (m_LifeText != null)
+            m_LifeText.text = "Life: " + m_Life;
+    }
+    public void AddShield(int value)
+    {
+        m_Shield += value;
+        UpdateShieldHUD();
+    }
+    void UpdateShieldHUD()
+    {
+        if (m_ShieldText != null)
+            m_ShieldText.text = "Shield: " + m_Shield;
+    }
+
 }

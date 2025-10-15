@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem.Android.LowLevel;
+using UnityEngine.SceneManagement;
 using static UnityEditor.Experimental.GraphView.GraphView;
 public class PlayerController : MonoBehaviour
 {
@@ -47,7 +48,9 @@ public class PlayerController : MonoBehaviour
     public AnimationClip m_ReloadAnimationClip;
     public AnimationClip m_ShootAnimationClip;
 
-    public int m_life = 100;
+    [Header("Health")]
+    public int m_Life = 100;
+    public int m_Shield = 100;
 
     [Header("Debug Input")]
     public KeyCode m_DebugLockAngleKeyCode = KeyCode.I;
@@ -198,6 +201,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.CompareTag("DeadZone"))
             Kill();
+        else if (other.CompareTag("SceneChanger"))
+            SceneManager.LoadSceneAsync("Level2Scene");
     }
 
     void Kill()
