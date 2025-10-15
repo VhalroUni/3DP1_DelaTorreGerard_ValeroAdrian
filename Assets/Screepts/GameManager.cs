@@ -1,12 +1,14 @@
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     static GameManager m_GameManager;
     PlayerController m_Player;
     public Transform m_DestroyObjects;
+    public int m_Score = 0;
+    public Text m_ScoreText;
 
     private void Awake()
     {
@@ -42,5 +44,15 @@ public class GameManager : MonoBehaviour
     public void SetPlayer(PlayerController Player)
     {
         m_Player = Player;
+    }
+    public void AddScore(int value)
+    {
+        m_Score += value;
+        UpdateScoreHUD();
+    }
+    void UpdateScoreHUD()
+    {
+        if (m_ScoreText != null)
+            m_ScoreText.text = " " + m_Score;
     }
 }

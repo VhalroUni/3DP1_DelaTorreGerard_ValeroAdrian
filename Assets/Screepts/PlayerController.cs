@@ -156,6 +156,8 @@ public class PlayerController : MonoBehaviour
         {
             if (l_RaycastHit.collider.CompareTag("HitCollider"))
                 l_RaycastHit.collider.GetComponent<HitCollider>().Hit();
+            else if (l_RaycastHit.collider.CompareTag("Target"))
+                l_RaycastHit.collider.GetComponent<ShootingGallery>().HitTarget();
             else
                 CreateShootHitParticles(l_RaycastHit.point, l_RaycastHit.normal);
         }

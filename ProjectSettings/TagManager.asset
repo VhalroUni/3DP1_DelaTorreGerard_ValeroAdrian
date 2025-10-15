@@ -7,6 +7,7 @@ TagManager:
   - Item
   - HitCollider
   - DeadZone
+  - Target
   layers:
   - Default
   - TransparentFX
