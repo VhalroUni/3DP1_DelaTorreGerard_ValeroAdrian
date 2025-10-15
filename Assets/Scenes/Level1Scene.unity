@@ -350,17 +350,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Version: 4
   m_UsePipelineSettings: 1
   m_AdditionalLightsShadowResolutionTier: 2
-  m_LightLayerMask: 1
-  m_RenderingLayers: 1
   m_CustomShadowLayers: 0
-  m_ShadowLayerMask: 1
-  m_ShadowRenderingLayers: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!1001 &511345690
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -711,6 +717,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b890216c6645c648bfde4c7ba8f0b08, type: 3}
+--- !u!114 &802077084 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5519145463481505500, guid: 14508314523b292428dfe3821b2b9550, type: 3}
+  m_PrefabInstance: {fileID: 7071643671650379451}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &805189435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1039,6 +1056,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18c800137884f7e41a1c548b743d113b, type: 3}
+--- !u!114 &884201492 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6383809125500414187, guid: 14508314523b292428dfe3821b2b9550, type: 3}
+  m_PrefabInstance: {fileID: 7071643671650379451}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &895702532
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1307,6 +1335,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1328,6 +1358,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -2078,6 +2109,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2831267316483566297, guid: 9e31d6d9401ccb84999ae6527f00513a, type: 3}
   m_PrefabInstance: {fileID: 1710111882}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1794500375 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5734963432379024721, guid: 14508314523b292428dfe3821b2b9550, type: 3}
+  m_PrefabInstance: {fileID: 7071643671650379451}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1839176081
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2707,9 +2749,25 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 6238428555396714747, guid: 287c6365f3a3503419a609bad4017b94, type: 3}
+      propertyPath: m_AmmoText
+      value: 
+      objectReference: {fileID: 884201492}
+    - target: {fileID: 6238428555396714747, guid: 287c6365f3a3503419a609bad4017b94, type: 3}
+      propertyPath: m_LifeText
+      value: 
+      objectReference: {fileID: 1794500375}
+    - target: {fileID: 6238428555396714747, guid: 287c6365f3a3503419a609bad4017b94, type: 3}
+      propertyPath: m_AmmoCount
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6238428555396714747, guid: 287c6365f3a3503419a609bad4017b94, type: 3}
       propertyPath: m_ScoreText
       value: 
       objectReference: {fileID: 1322570}
+    - target: {fileID: 6238428555396714747, guid: 287c6365f3a3503419a609bad4017b94, type: 3}
+      propertyPath: m_ShieldText
+      value: 
+      objectReference: {fileID: 802077084}
     - target: {fileID: 8372958416902936629, guid: 287c6365f3a3503419a609bad4017b94, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2763,6 +2821,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1164052876176963266, guid: 5f84d65c0c3b72d4b96995e7828de3df, type: 3}
+      propertyPath: m_AmmoCount
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4817486187148268488, guid: 5f84d65c0c3b72d4b96995e7828de3df, type: 3}
       propertyPath: m_LocalPosition.x
       value: 112.08902
@@ -3054,6 +3116,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6383809125500414187, guid: 14508314523b292428dfe3821b2b9550, type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3067,6 +3133,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1955151663480405477, guid: 2f591477a23b8c043a53c6ba335594d4, type: 3}
+      propertyPath: m_AmmoText
+      value: 
+      objectReference: {fileID: 884201492}
+    - target: {fileID: 1955151663480405477, guid: 2f591477a23b8c043a53c6ba335594d4, type: 3}
+      propertyPath: m_LifeText
+      value: 
+      objectReference: {fileID: 1794500375}
+    - target: {fileID: 1955151663480405477, guid: 2f591477a23b8c043a53c6ba335594d4, type: 3}
+      propertyPath: m_ShieldText
+      value: 
+      objectReference: {fileID: 802077084}
     - target: {fileID: 1955151663480405477, guid: 2f591477a23b8c043a53c6ba335594d4, type: 3}
       propertyPath: m_ShootParticles
       value: 

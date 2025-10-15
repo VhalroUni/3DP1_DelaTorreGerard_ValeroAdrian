@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem.Android.LowLevel;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using static UnityEditor.Experimental.GraphView.GraphView;
 public class PlayerController : MonoBehaviour
 {
@@ -24,7 +25,13 @@ public class PlayerController : MonoBehaviour
     public float m_JumpSpeed;
     public float m_SpeedMultiplier;
     public Camera m_Camera;
-    public int m_AmmoCount = 0;
+    public int m_AmmoCount;
+
+    [Header("Text")]
+    public Text m_AmmoText;
+    public Text m_LifeText;
+    public Text m_ShieldText;
+
 
     [Header("Shoot")]
     public float m_ShootMaxDistance = 50.0f;
@@ -76,6 +83,9 @@ public class PlayerController : MonoBehaviour
         GameManager.GetGameManager().SetPlayer(this);
         Cursor.lockState = CursorLockMode.Locked;
         SetIdleAnimation();
+        UpdateAmmoHUD();
+        UpdateLifeHUD();
+        UpdateShieldHUD();
     }
 
     void Update()
@@ -190,6 +200,32 @@ public class PlayerController : MonoBehaviour
     public void AddAmmo(int Ammo)
     {
         m_AmmoCount += Ammo;
+        UpdateAmmoHUD();
+    }
+    public void UpdateAmmoHUD()
+    {
+        if (m_AmmoText != null)
+            m_AmmoText.text = "Ammo: " + m_AmmoCount;
+    }
+    public void AddLife(int Life)
+    {
+        m_Life += Life;
+        UpdateLifeHUD();
+    }
+    public void UpdateLifeHUD()
+    {
+        if (m_LifeText != null)
+            m_LifeText.text = "Life: " + m_Life;
+    }
+    public void AddShield(int Shield)
+    {
+        m_Shield += Shield;
+        UpdateShieldHUD();
+    }
+    public void UpdateShieldHUD()
+    {
+        if (m_ShieldText != null)
+            m_ShieldText.text = "Shield: " + m_Shield;
     }
     private void OnTriggerEnter(Collider other)
     {
