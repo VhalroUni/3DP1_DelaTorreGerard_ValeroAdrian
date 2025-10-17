@@ -25,7 +25,6 @@ public class PlayerController : MonoBehaviour
     public float m_JumpSpeed;
     public float m_SpeedMultiplier;
     public Camera m_Camera;
-    public int m_AmmoCount;
 
     [Header("Text")]
     public Text m_AmmoText;
@@ -37,8 +36,12 @@ public class PlayerController : MonoBehaviour
     public float m_ShootMaxDistance = 50.0f;
     public LayerMask m_ShootLayerMask;
     public GameObject m_ShootParticles;
-    public float m_MaxAmmo = 100;
-    public float m_AmmoLoader = 10;
+    public int m_Ammo = 120;
+    public int m_TotalMaxAmmo = 120;
+    public int m_LoaderSize = 12;
+    public int m_CurrentAmmo = 12;
+    public float m_CooldownBetweenShots;
+    public float m_ReloadTime;
 
 
     [Header("Input")]
@@ -153,11 +156,25 @@ public class PlayerController : MonoBehaviour
     }
     bool CanReload()
     {
-        return true;
+        return true;    
     }
     void Reload()
     {
+        int m_NeededAmmo = m_LoaderSize - m_CurrentAmmo;
+
+        if (m_Ammo >= m_NeededAmmo)
+        {
+            m_CurrentAmmo += m_NeededAmmo;
+            m_Ammo -= m_NeededAmmo;
+        }
+        else
+        {
+            m_CurrentAmmo += m_Ammo;
+            m_Ammo = 0;
+        }
+
         SetReloadAnimation();
+        UpdateAmmoHUD();
     }
     bool CanShoot()
     {
@@ -166,16 +183,26 @@ public class PlayerController : MonoBehaviour
     void Shoot()
     {
         SetShootAnimation();
-        Ray l_Ray = m_Camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.0f));
-        if (Physics.Raycast(l_Ray, out RaycastHit l_RaycastHit, m_ShootMaxDistance, m_ShootLayerMask.value))
+        if(m_CurrentAmmo > 0)
         {
-            if (l_RaycastHit.collider.CompareTag("HitCollider"))
-                l_RaycastHit.collider.GetComponent<HitCollider>().Hit();
-            else if (l_RaycastHit.collider.CompareTag("Target"))
-                l_RaycastHit.collider.GetComponent<ShootingGallery>().HitTarget();
-            else
-                CreateShootHitParticles(l_RaycastHit.point, l_RaycastHit.normal);
+            Ray l_Ray = m_Camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.0f));
+            if (Physics.Raycast(l_Ray, out RaycastHit l_RaycastHit, m_ShootMaxDistance, m_ShootLayerMask.value))
+            {
+                if (l_RaycastHit.collider.CompareTag("HitCollider"))
+                    l_RaycastHit.collider.GetComponent<HitCollider>().Hit();
+                else if (l_RaycastHit.collider.CompareTag("Target"))
+                    l_RaycastHit.collider.GetComponent<ShootingGallery>().HitTarget();
+                else
+                    CreateShootHitParticles(l_RaycastHit.point, l_RaycastHit.normal);
+            }
+            m_CurrentAmmo--;
+            UpdateAmmoHUD();
         }
+        else
+        {
+            Debug.Log("Sin balas");
+        }
+        
     }
     void CreateShootHitParticles(Vector3 Position, Vector3 Normal)
     {
@@ -201,13 +228,13 @@ public class PlayerController : MonoBehaviour
     }
     public void AddAmmo(int Ammo)
     {
-        m_AmmoCount += Ammo;
+        m_Ammo += Ammo;
         UpdateAmmoHUD();
     }
     public void UpdateAmmoHUD()
     {
         if (m_AmmoText != null)
-            m_AmmoText.text = "Ammo: " + m_AmmoCount;
+            m_AmmoText.text = m_CurrentAmmo + " / " + m_Ammo;
     }
     public void AddLife(int Life)
     {
