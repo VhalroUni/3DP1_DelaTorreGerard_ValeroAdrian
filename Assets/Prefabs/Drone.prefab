@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4908408937229713964}
   - component: {fileID: 2119387868391908952}
+  - component: {fileID: 6365535222000282862}
   m_Layer: 0
   m_Name: Drone
   m_TagString: Untagged
@@ -56,6 +57,34 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &6365535222000282862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407139238239181920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d60767bd6b42bf488d3eaadca99f0d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+  m_Target: {fileID: 4908408937229713964}
+  m_MinDistanceToAttack: 5
+  m_PatrolPositoins: []
+  m_SightAngle: 60
+  m_SightLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  m_EyesHeight: 1.8
+  m_MaxEarDistance: 3
+  m_Life: 50
+  m_MaxLife: 50
+  m_LifeBarTransform: {fileID: 0}
+  m_LifeBarElementUI: {fileID: 0}
+  m_MeshRenderers:
+  - {fileID: 3698094020580224997}
+  m_DeadTime: 1.5
 --- !u!1 &885580527951142796
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,7 +133,7 @@ GameObject:
   - component: {fileID: 5591452703791506740}
   - component: {fileID: 7451257271589406441}
   - component: {fileID: 1771361726768064633}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere Body
   m_TagString: HitCollider
   m_Icon: {fileID: 0}
@@ -230,7 +259,7 @@ GameObject:
   - component: {fileID: 7852770927799097063}
   - component: {fileID: 3803389169915402182}
   - component: {fileID: 5084286258218379442}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere Body (1)
   m_TagString: HitCollider
   m_Icon: {fileID: 0}
@@ -356,7 +385,7 @@ GameObject:
   - component: {fileID: 245075108745197722}
   - component: {fileID: 5177626050368263860}
   - component: {fileID: 6784373230034474039}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere EliceL
   m_TagString: HitCollider
   m_Icon: {fileID: 0}
@@ -482,7 +511,7 @@ GameObject:
   - component: {fileID: 5578858889710017162}
   - component: {fileID: 6793376305017926184}
   - component: {fileID: 275627431191151882}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere EliceR
   m_TagString: HitCollider
   m_Icon: {fileID: 0}
@@ -693,5 +722,10 @@ PrefabInstance:
 --- !u!4 &3681299330742651109 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4530880045128832, guid: d0e2b6bf944e12c439220558bf7de75a, type: 3}
+  m_PrefabInstance: {fileID: 3676770126508627045}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &3698094020580224997 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 23861704525790080, guid: d0e2b6bf944e12c439220558bf7de75a, type: 3}
   m_PrefabInstance: {fileID: 3676770126508627045}
   m_PrefabAsset: {fileID: 0}

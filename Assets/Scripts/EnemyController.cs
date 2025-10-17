@@ -66,7 +66,10 @@ public class EnemyController : MonoBehaviour
     void SetFadeValue(float Pct)
     {
         foreach(MeshRenderer l_MeshRenderer in m_MeshRenderers)
-            l_MeshRenderer.sharedMaterial.SetFloat("_Cutoff",  Pct);
+        {
+            l_MeshRenderer.sharedMaterial.SetFloat("_Smoothness",  Pct);
+            l_MeshRenderer.sharedMaterial.SetColor("_BaseColor", Color.white*Pct);
+        }
     }
     private void Update()
     {
@@ -165,7 +168,7 @@ public class EnemyController : MonoBehaviour
     {
         m_CurrentTime += Time.deltaTime;
         float l_Pct=Mathf.Min(1.0f, m_CurrentTime/m_DeadTime);
-        SetFadeValue(l_Pct);
+        SetFadeValue(1.0f-l_Pct);
         if(l_Pct==1.0f)
             gameObject.SetActive(false);
     }
