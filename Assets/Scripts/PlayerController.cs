@@ -67,7 +67,6 @@ public class PlayerController : MonoBehaviour
     [Header("Debug Input")]
     public KeyCode m_DebugLockAngleKeyCode = KeyCode.I;
 
-
     void Start()
     {
         PlayerController l_Player = GameManager.GetGameManager().GetPLayer();
@@ -272,7 +271,10 @@ public class PlayerController : MonoBehaviour
 
     void Kill()
     {
-        GameManager.GetGameManager().RestartLevel();
+        GameManager.GetGameManager().m_Fade.FadeIn(() => {
+            GameManager.GetGameManager().RestartLevel();
+        });
+        
     }
     public void Restart()
     {

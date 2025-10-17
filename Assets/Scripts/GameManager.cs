@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public Transform m_DestroyObjects;
     public int m_Score = 0;
     public Text m_ScoreText;
+    public Fade m_Fade;
 
     private void Awake()
     {
