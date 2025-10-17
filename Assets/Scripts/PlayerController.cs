@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
     public int m_CurrentAmmo = 12;
     public float m_CooldownBetweenShots;
     public float m_ReloadTime;
+    PoolElements m_ShootParticlesPool;
 
 
     [Header("Input")]
@@ -69,6 +70,8 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        m_ShootParticlesPool = new PoolElements();
+        m_ShootParticlesPool.Init(25, m_ShootParticles);
         PlayerController l_Player = GameManager.GetGameManager().GetPLayer();
         if (l_Player != null)
         {
@@ -205,7 +208,7 @@ public class PlayerController : MonoBehaviour
     }
     void CreateShootHitParticles(Vector3 Position, Vector3 Normal)
     {
-        GameObject l_ShootParticles = GameObject.Instantiate(m_ShootParticles);
+        GameObject l_ShootParticles = m_ShootParticlesPool.GetNextElement();
         l_ShootParticles.transform.position = Position;
         l_ShootParticles.transform.rotation = Quaternion.LookRotation(Normal);
         l_ShootParticles.SetActive(true);

@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Ammo: 0'
+  m_Text: 
 --- !u!1 &4992861453391393401
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,7 +263,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Life: 0'
+  m_Text: 
 --- !u!1 &8547322495511652224
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,7 +417,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Shild: 0'
+  m_Text: 
 --- !u!1 &9129012833442717677
 GameObject:
   m_ObjectHideFlags: 0

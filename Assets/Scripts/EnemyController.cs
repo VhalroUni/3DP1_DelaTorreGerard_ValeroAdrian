@@ -42,17 +42,35 @@ public class EnemyController : MonoBehaviour
     [Header("LifeBar")]
     public Transform m_LifeBarTransform;
     public LifeBarElementUI m_LifeBarElementUI;
+
+    [Header("Dead")]
+    public List<MeshRenderer> m_MeshRenderers;
+    float m_CurrentTime;
+    public float m_DeadTime = 1.5f;
+
     private void Awake()
     {
         m_NavMeshAgent = GetComponent<NavMeshAgent>();
     }
     private void Start()
     {
+        InitFade();
         SetIdleState();
     }
 
+    void InitFade()
+    {
+        foreach (MeshRenderer l_MeshRenderer in m_MeshRenderers)
+            l_MeshRenderer.sharedMaterial = Material.Instantiate(l_MeshRenderer.sharedMaterial);
+    }
+    void SetFadeValue(float Pct)
+    {
+        foreach(MeshRenderer l_MeshRenderer in m_MeshRenderers)
+            l_MeshRenderer.sharedMaterial.SetFloat("_Cutoff",  Pct);
+    }
     private void Update()
     {
+        SetDieState();
         switch (m_State)
         {
             case TState.IDLE:
@@ -84,10 +102,10 @@ public class EnemyController : MonoBehaviour
     {
         m_LifeBarElementUI.Show(m_LifeBarTransform.position, m_Life/(float)m_MaxLife);
     }
-
     void SetIdleState()
     {
         m_State = TState.IDLE;
+        SetFadeValue(0.0f);
     }
     void UpdateIdleState()
     {
@@ -141,11 +159,15 @@ public class EnemyController : MonoBehaviour
     void SetDieState()
     {
         m_State = TState.DIE;
-        gameObject.SetActive(false);
+        m_CurrentTime = 0.0f;
     }
     void UpdateDieState()
     {
-
+        m_CurrentTime += Time.deltaTime;
+        float l_Pct=Mathf.Min(1.0f, m_CurrentTime/m_DeadTime);
+        SetFadeValue(l_Pct);
+        if(l_Pct==1.0f)
+            gameObject.SetActive(false);
     }
 
     void SetNextChasePosition()
@@ -197,4 +219,3 @@ public class EnemyController : MonoBehaviour
             SetDieState();
     }
 }
-
