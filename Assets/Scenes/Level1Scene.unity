@@ -2880,7 +2880,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1164052876176963266, guid: 5f84d65c0c3b72d4b96995e7828de3df, type: 3}
       propertyPath: m_AmmoCount
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4817486187148268488, guid: 5f84d65c0c3b72d4b96995e7828de3df, type: 3}
       propertyPath: m_LocalPosition.x
