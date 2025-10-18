@@ -73,7 +73,6 @@ public class EnemyController : MonoBehaviour
     }
     private void Update()
     {
-        SetDieState();
         switch (m_State)
         {
             case TState.IDLE:

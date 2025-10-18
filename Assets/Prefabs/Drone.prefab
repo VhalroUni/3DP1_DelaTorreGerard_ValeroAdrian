@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4908408937229713964}
   - component: {fileID: 2119387868391908952}
   - component: {fileID: 6365535222000282862}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Drone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   m_Target: {fileID: 4908408937229713964}
   m_MinDistanceToAttack: 5
-  m_PatrolPositoins: []
+  m_PatrolPositoins:
+  - {fileID: 0}
+  - {fileID: 0}
   m_SightAngle: 60
   m_SightLayerMask:
     serializedVersion: 2
@@ -94,7 +96,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7391834144101847599}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PA Dron
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +135,7 @@ GameObject:
   - component: {fileID: 5591452703791506740}
   - component: {fileID: 7451257271589406441}
   - component: {fileID: 1771361726768064633}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Sphere Body
   m_TagString: HitCollider
   m_Icon: {fileID: 0}
@@ -245,7 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitCollider
   m_Damage: 20
-  m_Enemy: {fileID: 0}
+  m_Enemy: {fileID: 6365535222000282862}
 --- !u!1 &6489010673767139381
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,7 +261,7 @@ GameObject:
   - component: {fileID: 7852770927799097063}
   - component: {fileID: 3803389169915402182}
   - component: {fileID: 5084286258218379442}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Sphere Body (1)
   m_TagString: HitCollider
   m_Icon: {fileID: 0}
@@ -371,7 +373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitCollider
   m_Damage: 20
-  m_Enemy: {fileID: 0}
+  m_Enemy: {fileID: 6365535222000282862}
 --- !u!1 &6877411113598297676
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,7 +387,7 @@ GameObject:
   - component: {fileID: 245075108745197722}
   - component: {fileID: 5177626050368263860}
   - component: {fileID: 6784373230034474039}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Sphere EliceL
   m_TagString: HitCollider
   m_Icon: {fileID: 0}
@@ -497,7 +499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitCollider
   m_Damage: 50
-  m_Enemy: {fileID: 0}
+  m_Enemy: {fileID: 6365535222000282862}
 --- !u!1 &8353482915846062056
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,7 +513,7 @@ GameObject:
   - component: {fileID: 5578858889710017162}
   - component: {fileID: 6793376305017926184}
   - component: {fileID: 275627431191151882}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Sphere EliceR
   m_TagString: HitCollider
   m_Icon: {fileID: 0}
@@ -623,7 +625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitCollider
   m_Damage: 50
-  m_Enemy: {fileID: 0}
+  m_Enemy: {fileID: 6365535222000282862}
 --- !u!1 &8966068236393156929
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,7 +635,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8039836707572163402}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AnchorLifeBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -666,6 +668,10 @@ PrefabInstance:
     - target: {fileID: 1262010245510058, guid: d0e2b6bf944e12c439220558bf7de75a, type: 3}
       propertyPath: m_Name
       value: Robot_Guardian
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262010245510058, guid: d0e2b6bf944e12c439220558bf7de75a, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1262010245510058, guid: d0e2b6bf944e12c439220558bf7de75a, type: 3}
       propertyPath: m_IsActive
