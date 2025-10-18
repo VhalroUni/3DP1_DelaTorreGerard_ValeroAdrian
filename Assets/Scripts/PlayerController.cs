@@ -40,9 +40,12 @@ public class PlayerController : MonoBehaviour
     public int m_TotalMaxAmmo = 120;
     public int m_LoaderSize = 12;
     public int m_CurrentAmmo = 12;
-    public float m_CooldownBetweenShots;
-    public float m_ReloadTime;
+    public float m_CooldownBetweenShots = 0.2f;
+    private float m_ShootTimer = 0f;
+    public float m_ReloadTime = 2f;
     PoolElements m_ShootParticlesPool;
+    private bool m_IsReloading = false;
+    private bool m_CanShoot = true;
 
 
     [Header("Input")]
@@ -97,6 +100,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (m_ShootTimer > 0f)
+            m_ShootTimer -= Time.deltaTime;
+
         float l_MouseX = Input.GetAxis("Mouse X");
         float l_MouseY = Input.GetAxis("Mouse Y");
 
@@ -158,10 +164,14 @@ public class PlayerController : MonoBehaviour
     }
     bool CanReload()
     {
-        return true;    
+        if (!m_IsReloading && m_CurrentAmmo < m_LoaderSize && m_Ammo > 0)
+            return true; 
+        return false;
     }
     void Reload()
     {
+        m_IsReloading = true;
+        m_ShootTimer = m_ReloadTime;
         int m_NeededAmmo = m_LoaderSize - m_CurrentAmmo;
 
         if (m_Ammo >= m_NeededAmmo)
@@ -177,13 +187,18 @@ public class PlayerController : MonoBehaviour
 
         SetReloadAnimation();
         UpdateAmmoHUD();
+        m_IsReloading = false;
     }
     bool CanShoot()
     {
-        return true;
+        if (!m_IsReloading && m_CanShoot && m_CurrentAmmo > 0 && m_ShootTimer <= 0f)
+            return true;
+        return false;
     }
     void Shoot()
     {
+        m_CanShoot = false;
+        m_ShootTimer = m_CooldownBetweenShots;
         SetShootAnimation();
         if(m_CurrentAmmo > 0)
         {
@@ -204,7 +219,7 @@ public class PlayerController : MonoBehaviour
         {
             Reload();
         }
-        
+        m_CanShoot = true;
     }
     void CreateShootHitParticles(Vector3 Position, Vector3 Normal)
     {

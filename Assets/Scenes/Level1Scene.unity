@@ -750,6 +750,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1628818542}
     - target: {fileID: 1955151663480405477, guid: 2f591477a23b8c043a53c6ba335594d4, type: 3}
+      propertyPath: m_ReloadTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1955151663480405477, guid: 2f591477a23b8c043a53c6ba335594d4, type: 3}
       propertyPath: m_ShieldText
       value: 
       objectReference: {fileID: 1628818541}
@@ -757,6 +761,10 @@ PrefabInstance:
       propertyPath: m_ShootParticles
       value: 
       objectReference: {fileID: 1867256917}
+    - target: {fileID: 1955151663480405477, guid: 2f591477a23b8c043a53c6ba335594d4, type: 3}
+      propertyPath: m_CooldownBetweenShots
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2860576931173711061, guid: 2f591477a23b8c043a53c6ba335594d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 119.92745
@@ -1550,6 +1558,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1430841697005043554, guid: d324de115c4dff845bee7b7f166883c4, type: 3}
   m_PrefabInstance: {fileID: 587562355}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1370510042 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6365535222000282862, guid: 7a46d4a25fbf3fc4aba0bf14a357af8b, type: 3}
+  m_PrefabInstance: {fileID: 1861520210}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d60767bd6b42bf488d3eaadca99f0d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyController
 --- !u!4 &1375225255 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7748243253764950964, guid: 0a65198f3cbcab345bc0b33f23a45e76, type: 3}
@@ -2394,10 +2413,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 275627431191151882, guid: 7a46d4a25fbf3fc4aba0bf14a357af8b, type: 3}
+      propertyPath: m_Enemy
+      value: 
+      objectReference: {fileID: 1370510042}
     - target: {fileID: 407139238239181920, guid: 7a46d4a25fbf3fc4aba0bf14a357af8b, type: 3}
       propertyPath: m_Name
       value: Drone
       objectReference: {fileID: 0}
+    - target: {fileID: 1771361726768064633, guid: 7a46d4a25fbf3fc4aba0bf14a357af8b, type: 3}
+      propertyPath: m_Enemy
+      value: 
+      objectReference: {fileID: 1370510042}
     - target: {fileID: 4908408937229713964, guid: 7a46d4a25fbf3fc4aba0bf14a357af8b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 119.4251
@@ -2438,6 +2465,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5084286258218379442, guid: 7a46d4a25fbf3fc4aba0bf14a357af8b, type: 3}
+      propertyPath: m_Enemy
+      value: 
+      objectReference: {fileID: 1370510042}
+    - target: {fileID: 6365535222000282862, guid: 7a46d4a25fbf3fc4aba0bf14a357af8b, type: 3}
+      propertyPath: m_LifeBarTransform
+      value: 
+      objectReference: {fileID: 2095767584}
+    - target: {fileID: 6784373230034474039, guid: 7a46d4a25fbf3fc4aba0bf14a357af8b, type: 3}
+      propertyPath: m_Enemy
+      value: 
+      objectReference: {fileID: 1370510042}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3112,6 +3151,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LifeBarsUI
       objectReference: {fileID: 0}
+    - target: {fileID: 4121136450929667248, guid: b6d2b308adf2e5943befa58db61401b3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00024414062
+      objectReference: {fileID: 0}
     - target: {fileID: 8065240130761333542, guid: b6d2b308adf2e5943befa58db61401b3, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -3197,6 +3240,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6d2b308adf2e5943befa58db61401b3, type: 3}
+--- !u!224 &2095767584 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8065240130761333542, guid: b6d2b308adf2e5943befa58db61401b3, type: 3}
+  m_PrefabInstance: {fileID: 2041354227}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5360093264430324295
 PrefabInstance:
   m_ObjectHideFlags: 0
