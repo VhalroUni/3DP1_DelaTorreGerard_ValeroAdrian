@@ -34,8 +34,8 @@ public class ShootingGalleryZone : MonoBehaviour
                 m_Timer = 0f;
                 EndShootingGallery();
             }
-            if (m_TimerText != null)
-                m_TimerText.text = "Time: " + m_Timer;
+
+            m_TimerText.text = "Time: " + Mathf.CeilToInt(m_Timer); //Mathf.CeilToInt pregunta a ChatGPT. Pregunta "En Visual Studio para Unity3D como hago para que los segundos no salgan decimales?"
 
             if (Input.GetKeyDown(KeyCode.T))
                 RestartShootingGallery();
