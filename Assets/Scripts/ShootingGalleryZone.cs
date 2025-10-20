@@ -7,52 +7,70 @@ public class ShootingGalleryZone : MonoBehaviour
     public GameObject m_HUD;
     public Text m_ScoreText;
     public Text m_TimerText;
+    public Text m_MessageText;
     public float m_TimerPlay = 30f;
     public int m_TargetScore = 100;
     public GameObject m_Door;
     public int m_Score = 0;
 
     private float m_Timer;
+    private bool m_IsPlayerInside = false;
 
     private void Start()
     {
         m_HUD.SetActive(false);
-        m_Timer = m_TimerPlay;
+        m_MessageText.gameObject.SetActive(false);
     }
     private void Update()
     {
-        if (m_Timer > 0f)
+        if (m_IsPlayerInside)
         {
-            m_Timer -= Time.deltaTime;
-        }
-        else
-        {
-            m_Timer = 0f;
-            EndShootingGallery();
-        }
-        if(m_TimerText != null)
-            m_TimerText.text = "Time: " + m_Timer;
+            if (m_Timer > 0f)
+            {
+                m_Timer -= Time.deltaTime;
+            }
+            else
+            {
+                m_Timer = 0f;
+                EndShootingGallery();
+            }
+            if (m_TimerText != null)
+                m_TimerText.text = "Time: " + m_Timer;
 
-        if (Input.GetKeyDown(KeyCode.R))
-            RestartShootingGallery();
+            if (Input.GetKeyDown(KeyCode.T))
+                RestartShootingGallery();
+        }
     }
     private void OnTriggerEnter(Collider player)
     {
-        if(player.CompareTag("Player"))
+        if (player.CompareTag("Player"))
+        {
+            m_IsPlayerInside=true;
             m_HUD.SetActive(true);
+            m_MessageText.gameObject.SetActive(true) ;
+            m_MessageText.text = "Tienes 30 segundos! Pulsa T para reinciar";
             m_Timer = m_TimerPlay;
             UpdateScoreHUD();
+        }
     } 
 
     private void OnTriggerExit(Collider player)
     {
         if (player.CompareTag("Player"))
+        {
+            m_IsPlayerInside=false;
             m_HUD.SetActive(false);
+        }
     }
     public void AddScore(int score)
     {
         m_Score += score;
         UpdateScoreHUD();
+        if(m_Score >= m_TargetScore && m_Door != null)
+        {
+            m_Door.SetActive(false);
+            Destroy(m_Door);
+        }
     }
     void UpdateScoreHUD()
     {
