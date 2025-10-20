@@ -215,10 +215,10 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color0: {r: 1, g: 1, b: 1, a: 0}
-    - _ColorVariation: {r: 0, g: 0.28108943, b: 0.4245283, a: 0}
+    - _ColorVariation: {r: 0.42352942, g: 0.22214906, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GradientColor: {r: 0.24200165, g: 0.5566038, b: 0, a: 0}
-    - _MainColor: {r: 0.5962733, g: 1, b: 0, a: 1}
+    - _GradientColor: {r: 0.5568628, g: 0.14845823, b: 0, a: 0}
+    - _MainColor: {r: 1, g: 0.66734684, b: 0, a: 1}
     - _ScatteringColor: {r: 0.56218994, g: 1, b: 0, a: 0}
     - _SpecularColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
     - _Tiling: {r: 4, g: 4, b: 0, a: 0}
@@ -229,3 +229,4 @@ Material:
     - _Vector0: {r: 1, g: 1, b: 0, a: 0}
     - _windOrientation: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
