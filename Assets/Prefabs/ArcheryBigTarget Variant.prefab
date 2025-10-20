@@ -139,9 +139,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7022168071016655989}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.065262996, y: -0.85861623, z: 0.113038704, w: 0.495723}
+  m_LocalRotation: {x: 0.06526307, y: -0.85861653, z: 0.11303897, w: 0.49572238}
   m_LocalPosition: {x: 257.7037, y: 5.6042547, z: 307.61026}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.591, y: 2.591, z: 2.591}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6944924657864559798}
@@ -181,3 +181,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShootingGallery
   m_ScoreValue: 10
+  m_Zone: {fileID: 0}

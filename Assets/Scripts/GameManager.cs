@@ -7,8 +7,8 @@ public class GameManager : MonoBehaviour
     static GameManager m_GameManager;
     PlayerController m_Player;
     public Transform m_DestroyObjects;
-    public int m_Score = 0;
-    public Text m_ScoreText;
+    //public int m_Score = 0;
+    //public Text m_ScoreText;
     public Fade m_Fade;
 
     private void Awake()
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     {
         m_Player = Player;
     }
-    public void AddScore(int value)
+    /*public void AddScore(int value)
     {
         m_Score += value;
         UpdateScoreHUD();
@@ -59,5 +59,5 @@ public class GameManager : MonoBehaviour
     {
         if (m_ScoreText != null)
             m_ScoreText.text = "Score: " + m_Score;
-    }
+    }*/
 }
