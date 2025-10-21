@@ -68,6 +68,10 @@ public class PlayerController : MonoBehaviour
     public int m_Life = 100;
     public int m_Shield = 100;
 
+    [Header("Damage")]
+    public int m_ShieldDamage = 75;
+    public int m_LifeDamage = 25;
+
     [Header("Debug Input")]
     public KeyCode m_DebugLockAngleKeyCode = KeyCode.I;
 
@@ -306,5 +310,36 @@ public class PlayerController : MonoBehaviour
         transform.position = m_StartPosition;
         transform.rotation = m_StartRotation;
         m_CharacterController.enabled = true;
+    }
+
+    public void Damage(int damage)
+    {
+        if(m_Shield > 0)
+        {
+            m_ShieldDamage = 75/100 * damage;
+            m_LifeDamage = 25/100 * damage;
+            m_Shield -= m_ShieldDamage;
+
+            if(m_Shield < 0)
+            {
+                m_Life -= m_LifeDamage;
+                m_Shield = 0;
+            }
+        }
+        else
+        {
+            m_Life -= damage;
+        }
+
+        if (m_Life < 0)
+        {
+            m_Life = 0;
+        }
+
+        UpdateShieldHUD();
+        UpdateLifeHUD();
+
+        if(m_Life <= 0)
+            Kill();
     }
 }

@@ -36,8 +36,8 @@ public class EnemyController : MonoBehaviour
     public float m_MaxEarDistance = 3.0f;
 
     [Header("Life")]
-    public int m_Life = 50;
-    public int m_MaxLife = 50;
+    public int m_Life = 100;
+    public int m_MaxLife = 100;
 
     [Header("LifeBar")]
     public Transform m_LifeBarTransform;
@@ -119,7 +119,16 @@ public class EnemyController : MonoBehaviour
     }
     void UpdateAlertState()
     {
-
+        //Dar la vuelta 360 grados
+        /*if (SeesPlayer && m_MinDistanceToAttack >= 5)
+        {
+            SetChaseState();
+        }
+        else if (SeesPlayer && m_MinDistanceToAttack <= 5)
+        {
+            SetAttackState();
+        }
+        */
     }
     void SetPatrolState()
     {
@@ -140,7 +149,9 @@ public class EnemyController : MonoBehaviour
     }
     void UpdateAttackState()
     {
-
+        //Si le pegas un hit se queda en alert, si no te ve despues de esto = patrol, si te ve = chase.
+        //El player recibe damage
+        GameManager.GetGameManager().GetPLayer().Damage(25);
     }
     void SetChaseState()
     {
