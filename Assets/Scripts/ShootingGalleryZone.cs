@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -15,6 +16,7 @@ public class ShootingGalleryZone : MonoBehaviour
 
     private float m_Timer;
     private bool m_IsPlayerInside = false;
+    private List<GameObject> m_Targets;
 
     private void Start()
     {
@@ -86,5 +88,16 @@ public class ShootingGalleryZone : MonoBehaviour
     private void EndShootingGallery()
     {
         m_HUD.SetActive(false );
+    }
+
+    private void RestartTargets(int Count, GameObject PrefabElement)
+    {
+        m_Targets = new List<GameObject>();
+        for (int i = 0; i < Count; i++)
+        {
+            GameObject l_GameObject = GameObject.Instantiate(PrefabElement);
+            l_GameObject.SetActive(false);
+            m_Targets.Add(l_GameObject);
+        }
     }
 }
