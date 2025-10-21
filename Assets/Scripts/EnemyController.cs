@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -22,10 +20,17 @@ public class EnemyController : MonoBehaviour
 
     [Header("Distance")]
     public float m_MinDistanceToAttack = 5.0f;
+    public float m_MinDistanceToPlayer = 2f;
 
     [Header("Patrol")]
     public List<Transform> m_PatrolPositoins;
     int m_CurrentPatrolPositionId = 0;
+
+    [Header("Chase")]
+    public float m_Speed = 2f;
+
+    [Header("Hit")]
+    HitCollider m_HitCollider;
 
     [Header("Sight")]
     public float m_SightAngle = 60.0f;
@@ -150,8 +155,22 @@ public class EnemyController : MonoBehaviour
     void UpdateAttackState()
     {
         //Si le pegas un hit se queda en alert, si no te ve despues de esto = patrol, si te ve = chase.
-        //El player recibe damage
-        GameManager.GetGameManager().GetPLayer().Damage(25);
+        if(m_HitCollider != null)
+        {
+            m_HitCollider.Hit();
+            m_State = TState.ALERT;
+
+            if (!SeesPlayer())
+            {
+                m_State = TState.PATROL;
+            }
+            else
+            {
+                m_State = TState.CHASE;
+            }
+            //El player recibe damage
+            GameManager.GetGameManager().GetPLayer().Damage(25);
+        }
     }
     void SetChaseState()
     {
@@ -159,7 +178,19 @@ public class EnemyController : MonoBehaviour
     }
     void UpdateChaseState()
     {
+        float distance = Vector3.Distance(transform.position, GameManager.GetGameManager().GetPLayer().transform.position);
+        if (distance > m_MinDistanceToPlayer)
+            SetNextChasePosition();
 
+        /*Vector3 direction = GameManager.GetGameManager().GetPLayer().transform.position - transform.position;
+        direction.Normalize();
+
+        float distance = Vector3.Distance(transform.position, GameManager.GetGameManager().GetPLayer().transform.position);
+        if (distance > m_MinDistanceToPlayer)
+        {
+            transform.position += direction * m_Speed * Time.deltaTime;
+            transform.forward = direction;
+        }*/
     }
     void SetHitState()
     {
@@ -167,7 +198,13 @@ public class EnemyController : MonoBehaviour
     }
     void UpdateHitState()
     {
-
+        //While(m_Life > 0)???
+        /*
+        if(ReciveDamage && m_Life > 0)
+        {
+            SetHitState()
+        }
+        */
     }
     void SetDieState()
     {
@@ -176,6 +213,13 @@ public class EnemyController : MonoBehaviour
     }
     void UpdateDieState()
     {
+        //While(m_Life > 0)???
+        /*
+        if(ReciveDamage && m_Life <= 0)
+        {
+            SetDieState()
+        }
+        */
         m_CurrentTime += Time.deltaTime;
         float l_Pct=Mathf.Min(1.0f, m_CurrentTime/m_DeadTime);
         SetFadeValue(1.0f-l_Pct);
