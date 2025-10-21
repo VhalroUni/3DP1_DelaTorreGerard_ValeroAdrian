@@ -10,8 +10,8 @@ public class AmmoItem : Item
     }
     public override bool CanPick()
     {
-        //falta implementar que se pueda recoger cuando le falten balas y to la paranoia
-        if (m_AmmoCount == 100) //Max de balas
+        PlayerController m_Player = GameManager.GetGameManager().GetPLayer();
+        if (m_Player.m_Ammo >= 120) //Max de balas
             return false;
         else
         return true;

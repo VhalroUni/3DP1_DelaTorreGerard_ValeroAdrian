@@ -246,6 +246,8 @@ public class PlayerController : MonoBehaviour
     public void AddAmmo(int Ammo)
     {
         m_Ammo += Ammo;
+        if (m_Ammo > 120)
+            m_Ammo = 120;
         UpdateAmmoHUD();
     }
     public void UpdateAmmoHUD()
@@ -256,6 +258,8 @@ public class PlayerController : MonoBehaviour
     public void AddLife(int Life)
     {
         m_Life += Life;
+        if (m_Life > 100)
+            m_Life = 100;
         UpdateLifeHUD();
     }
     public void UpdateLifeHUD()
@@ -266,6 +270,8 @@ public class PlayerController : MonoBehaviour
     public void AddShield(int Shield)
     {
         m_Shield += Shield;
+        if(m_Shield > 100)
+            m_Shield = 100;
         UpdateShieldHUD();
     }
     public void UpdateShieldHUD()

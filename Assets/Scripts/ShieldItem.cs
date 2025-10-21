@@ -10,7 +10,8 @@ public class ShieldItem : Item
     }
     public override bool CanPick()
     {
-        if (m_ShieldCount == 100) //Max de escudo
+        PlayerController m_Player = GameManager.GetGameManager().GetPLayer();
+        if (m_Player.m_Shield >= 100) //Max de escudo
             return false;
         else
             return true;
