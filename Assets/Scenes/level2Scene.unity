@@ -20740,9 +20740,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 275627431191151882, guid: 7a46d4a25fbf3fc4aba0bf14a357af8b, type: 3}
+      propertyPath: m_Damage
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 407139238239181920, guid: 7a46d4a25fbf3fc4aba0bf14a357af8b, type: 3}
       propertyPath: m_Name
       value: Drone
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771361726768064633, guid: 7a46d4a25fbf3fc4aba0bf14a357af8b, type: 3}
+      propertyPath: m_Damage
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4908408937229713964, guid: 7a46d4a25fbf3fc4aba0bf14a357af8b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20784,6 +20792,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5084286258218379442, guid: 7a46d4a25fbf3fc4aba0bf14a357af8b, type: 3}
+      propertyPath: m_Damage
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6365535222000282862, guid: 7a46d4a25fbf3fc4aba0bf14a357af8b, type: 3}
       propertyPath: m_MaxEarDistance
       value: 10
@@ -20812,6 +20824,10 @@ PrefabInstance:
       propertyPath: 'm_PatrolPositoins.Array.data[1]'
       value: 
       objectReference: {fileID: 1927301210}
+    - target: {fileID: 6784373230034474039, guid: 7a46d4a25fbf3fc4aba0bf14a357af8b, type: 3}
+      propertyPath: m_Damage
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -46428,6 +46444,10 @@ PrefabInstance:
       propertyPath: m_ShootParticles
       value: 
       objectReference: {fileID: 1184153568}
+    - target: {fileID: 1955151663480405477, guid: 2f591477a23b8c043a53c6ba335594d4, type: 3}
+      propertyPath: m_ShootLayerMask.m_Bits
+      value: 209
+      objectReference: {fileID: 0}
     - target: {fileID: 2860576931173711061, guid: 2f591477a23b8c043a53c6ba335594d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.69

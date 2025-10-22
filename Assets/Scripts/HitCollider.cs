@@ -7,6 +7,7 @@ public class HitCollider : MonoBehaviour
 
     public void Hit()
     {
+        Debug.Log("Disparo acertado");
         m_Enemy.Hit(m_Damage);
     }
 }

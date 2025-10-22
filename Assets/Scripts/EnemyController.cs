@@ -49,6 +49,10 @@ public class EnemyController : MonoBehaviour
     public Transform m_LifeBarTransform;
     public LifeBarElementUI m_LifeBarElementUI;
 
+    [Header("AttackCooldowns")]
+    public float m_AttackCooldown = 0.3f;
+    private float m_AttackTimer = 0;
+
     [Header("Dead")]
     public List<MeshRenderer> m_MeshRenderers;
     float m_CurrentTime;
@@ -79,6 +83,9 @@ public class EnemyController : MonoBehaviour
     }
     private void Update()
     {
+        if(m_AttackCooldown > 0f)
+            m_AttackTimer -= Time.deltaTime;
+
         switch (m_State)
         {
             case TState.IDLE:
@@ -127,6 +134,7 @@ public class EnemyController : MonoBehaviour
     {
         Debug.Log("Me escucha");
         //Dar la vuelta 360 grados
+        transform.Rotate(0f, 360f * Time.deltaTime, 0f);
         if (SeesPlayer())
         {
             SetChaseState();
@@ -178,9 +186,13 @@ public class EnemyController : MonoBehaviour
             SetNextChasePosition();
         else
         {
-            //El player recibe damage
-            Debug.Log("Damaga al Player");
-            GameManager.GetGameManager().GetPLayer().Damage(0);
+            if(m_AttackTimer <= 0)
+            {
+                //El player recibe damage
+                Debug.Log("Damaga al Player");
+                GameManager.GetGameManager().GetPLayer().Damage(10);
+                m_AttackTimer = m_AttackCooldown;
+            }
         }
     }
     void SetHitState()
