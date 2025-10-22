@@ -315,8 +315,8 @@ public class PlayerController : MonoBehaviour
 
     public void Damage(int damage)
     {
-        m_ShieldDamage = (int)(75f / 100f * damage);
-        m_LifeDamage = (int)(25f / 100f * damage);
+        m_ShieldDamage = Mathf.RoundToInt(75f / 100f * damage); //Pregunta a IA. Pregunta "En Visual Studio para Unity3D como hago para que los segundos no salgan decimales?"
+        m_LifeDamage = Mathf.RoundToInt(25f / 100f * damage);
 
         if (m_Shield > 0)
         {

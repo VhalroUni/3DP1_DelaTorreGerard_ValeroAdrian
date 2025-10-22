@@ -135,7 +135,7 @@ public class EnemyController : MonoBehaviour
     {
         Debug.Log("Me escucha");
         //Dar la vuelta 360 grados
-        transform.Rotate(0f, 180f * Time.deltaTime, 0f);
+        transform.Rotate(0f, 180f * Time.deltaTime, 0f); //Funcion Rotate preguntado con IA
         if (SeesPlayer())
         {
             SetChaseState();
@@ -212,7 +212,7 @@ public class EnemyController : MonoBehaviour
         {
             Debug.Log("Hit");
             m_HitCollider.Hit();
-            SetAlertState();
+            //SetAlertState();
 
             if (!SeesPlayer())
             {

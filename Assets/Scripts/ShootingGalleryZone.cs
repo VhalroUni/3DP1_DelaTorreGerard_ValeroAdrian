@@ -37,7 +37,7 @@ public class ShootingGalleryZone : MonoBehaviour
                 EndShootingGallery();
             }
 
-            m_TimerText.text = "Time: " + Mathf.CeilToInt(m_Timer); //Mathf.CeilToInt pregunta a ChatGPT. Pregunta "En Visual Studio para Unity3D como hago para que los segundos no salgan decimales?"
+            m_TimerText.text = "Time: " + Mathf.RoundToInt(m_Timer); //Mathf.CeilToInt pregunta a ChatGPT. Pregunta "En Visual Studio para Unity3D como hago para que los segundos no salgan decimales?"
 
             if (Input.GetKeyDown(KeyCode.T))
                 RestartShootingGallery();
