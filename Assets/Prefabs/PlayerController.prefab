@@ -66,7 +66,7 @@ GameObject:
   - component: {fileID: 1062000426490122580}
   m_Layer: 0
   m_Name: PlayerController
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_AmmoText: {fileID: 0}
   m_LifeText: {fileID: 0}
   m_ShieldText: {fileID: 0}
-  m_ShootMaxDistance: 25
+  m_ShootMaxDistance: 100
   m_ShootLayerMask:
     serializedVersion: 2
     m_Bits: 81
@@ -124,8 +124,8 @@ MonoBehaviour:
   m_TotalMaxAmmo: 120
   m_LoaderSize: 12
   m_CurrentAmmo: 12
-  m_CooldownBetweenShots: 0
-  m_ReloadTime: 0
+  m_CooldownBetweenShots: 0.2
+  m_ReloadTime: 1
   m_LeftKeyCode: 97
   m_RightKeyCode: 100
   m_UpKeyCode: 119
@@ -140,6 +140,8 @@ MonoBehaviour:
   m_ShootAnimationClip: {fileID: 7400000, guid: f775796901b36da44917af382f1d2c8d, type: 2}
   m_Life: 100
   m_Shield: 100
+  m_ShieldDamage: 75
+  m_LifeDamage: 25
   m_DebugLockAngleKeyCode: 105
 --- !u!143 &1062000426490122580
 CharacterController:

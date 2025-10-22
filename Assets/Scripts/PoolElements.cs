@@ -14,6 +14,7 @@ public class PoolElements
         {
             GameObject l_GameObject = GameObject.Instantiate(PrefabElement);
             l_GameObject.SetActive(false);
+            Object.DontDestroyOnLoad(l_GameObject);
             m_Elements.Add(l_GameObject);
         }
     }
