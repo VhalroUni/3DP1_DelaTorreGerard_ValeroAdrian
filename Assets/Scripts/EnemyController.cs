@@ -27,6 +27,9 @@ public class EnemyController : MonoBehaviour
     int m_CurrentPatrolPositionId = 0;
 
     [Header("Chase")]
+    public float m_AlertTimer = 0f;
+
+    [Header("Chase")]
     public float m_Speed = 2f;
     public float m_MaxDistanceToChase = 15f;
 
@@ -129,18 +132,22 @@ public class EnemyController : MonoBehaviour
     void SetAlertState()
     {
         m_State = TState.ALERT;
+        m_AlertTimer = 0f;
         Debug.Log("Alerta");
     }
     void UpdateAlertState()
     {
         Debug.Log("Me escucha");
         //Dar la vuelta 360 grados
+        m_AlertTimer += Time.deltaTime;
         transform.Rotate(0f, 180f * Time.deltaTime, 0f); //Funcion Rotate preguntado con IA
         if (SeesPlayer())
         {
             SetChaseState();
+            return;
         }
-        else
+
+        if (m_AlertTimer >= 2f)
         {
             SetPatrolState();
         }
@@ -212,7 +219,7 @@ public class EnemyController : MonoBehaviour
         {
             Debug.Log("Hit");
             m_HitCollider.Hit();
-            SetAlertState();
+            
 
             /*if (!SeesPlayer())
             {
@@ -227,6 +234,11 @@ public class EnemyController : MonoBehaviour
                     SetNextChasePosition();
                 }
             }*/
+        }
+        m_CurrentTime += Time.deltaTime;
+        if(m_CurrentTime > 0.5f)
+        {
+            SetAlertState();
         }
     }
     void SetDieState()
