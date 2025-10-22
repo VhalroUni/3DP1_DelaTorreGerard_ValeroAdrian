@@ -16,12 +16,14 @@ public class ShootingGalleryZone : MonoBehaviour
 
     private float m_Timer;
     private bool m_IsPlayerInside = false;
-    private List<GameObject> m_Targets;
+    private ShootingGallery[] allTargets;
 
     private void Start()
     {
         m_HUD.SetActive(false);
         m_MessageText.gameObject.SetActive(false);
+        allTargets = FindObjectsByType<ShootingGallery>(FindObjectsSortMode.None);
+
     }
     private void Update()
     {
@@ -84,20 +86,14 @@ public class ShootingGalleryZone : MonoBehaviour
         m_Score = 0;
         m_Timer = m_TimerPlay;
         UpdateScoreHUD();
+
+        foreach (ShootingGallery target in allTargets)
+        {
+            target.gameObject.SetActive(true);
+        }
     }
     private void EndShootingGallery()
     {
         m_HUD.SetActive(false );
-    }
-
-    private void RestartTargets(int Count, GameObject PrefabElement)
-    {
-        m_Targets = new List<GameObject>();
-        for (int i = 0; i < Count; i++)
-        {
-            GameObject l_GameObject = GameObject.Instantiate(PrefabElement);
-            l_GameObject.SetActive(false);
-            m_Targets.Add(l_GameObject);
-        }
     }
 }
