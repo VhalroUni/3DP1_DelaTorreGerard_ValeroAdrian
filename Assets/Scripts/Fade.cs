@@ -18,7 +18,7 @@ public class Fade : MonoBehaviour
     {
         m_CurrentTime += Time.deltaTime;
         float l_Pct=Mathf.Min(1.0f, m_CurrentTime/m_FadeTime);
-        m_FadeImage.color=new Color(1.0f, 1.0f,1.0f,m_IsFadeIn ? l_Pct : 1.0f-l_Pct);
+        m_FadeImage.color=new Color(0.0f, 0.0f,0.0f,m_IsFadeIn ? l_Pct : 1.0f-l_Pct);
         if (l_Pct == 1.0f)
             m_OnFadeEndedFn();
     }
