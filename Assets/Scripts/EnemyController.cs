@@ -120,7 +120,7 @@ public class EnemyController : MonoBehaviour
     void SetIdleState()
     {
         m_State = TState.IDLE;
-        SetFadeValue(0.0f);
+        SetFadeValue(1.0f); //sfdadfadfaewfdawefd
     }
     void UpdateIdleState()
     {
@@ -212,9 +212,9 @@ public class EnemyController : MonoBehaviour
         {
             Debug.Log("Hit");
             m_HitCollider.Hit();
-            //SetAlertState();
+            SetAlertState();
 
-            if (!SeesPlayer())
+            /*if (!SeesPlayer())
             {
                 SetPatrolState();
             }
@@ -226,7 +226,7 @@ public class EnemyController : MonoBehaviour
                     SetChaseState();
                     SetNextChasePosition();
                 }
-            }
+            }*/
         }
     }
     void SetDieState()
