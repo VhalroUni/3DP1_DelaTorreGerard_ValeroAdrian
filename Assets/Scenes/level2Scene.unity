@@ -20785,6 +20785,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6365535222000282862, guid: 7a46d4a25fbf3fc4aba0bf14a357af8b, type: 3}
+      propertyPath: m_MaxEarDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365535222000282862, guid: 7a46d4a25fbf3fc4aba0bf14a357af8b, type: 3}
       propertyPath: m_LifeBarElementUI
       value: 
       objectReference: {fileID: 1228808402}

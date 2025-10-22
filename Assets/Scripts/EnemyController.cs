@@ -125,6 +125,7 @@ public class EnemyController : MonoBehaviour
     }
     void UpdateAlertState()
     {
+        Debug.Log("Me escucha");
         //Dar la vuelta 360 grados
         if (SeesPlayer())
         {
@@ -191,6 +192,7 @@ public class EnemyController : MonoBehaviour
     {
         if (m_HitCollider != null)
         {
+            Debug.Log("Hit");
             m_HitCollider.Hit();
             SetAlertState();
 
@@ -203,12 +205,6 @@ public class EnemyController : MonoBehaviour
                 float distance = Vector3.Distance(transform.position, GameManager.GetGameManager().GetPLayer().transform.position);
                 if (distance > m_MinDistanceToAttack)
                     SetChaseState();
-                else
-                {
-                    //El player recibe damage
-                    Debug.Log("Damage al Player");
-                    GameManager.GetGameManager().GetPLayer().Damage(1);
-                }
             }
         }
     }
