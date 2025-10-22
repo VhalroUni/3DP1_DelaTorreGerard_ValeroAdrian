@@ -310,19 +310,22 @@ public class PlayerController : MonoBehaviour
         transform.position = m_StartPosition;
         transform.rotation = m_StartRotation;
         m_CharacterController.enabled = true;
+        UpdateAmmoHUD();
+        UpdateShieldHUD();
+        UpdateLifeHUD();
     }
 
     public void Damage(int damage)
     {
         if(m_Shield > 0)
         {
-            m_ShieldDamage = 75/100 * damage;
-            m_LifeDamage = 25/100 * damage;
-            m_Shield -= m_ShieldDamage;
+            //m_ShieldDamage = 75/100 * damage;
+            //m_LifeDamage = 25/100 * damage;
+            m_Shield -= damage;
 
             if(m_Shield < 0)
             {
-                m_Life -= m_LifeDamage;
+                m_Life -= damage;
                 m_Shield = 0;
             }
         }

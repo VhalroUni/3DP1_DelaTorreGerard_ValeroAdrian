@@ -71,9 +71,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   m_Target: {fileID: 4908408937229713964}
   m_MinDistanceToAttack: 5
+  m_MinDistanceToPlayer: 2
   m_PatrolPositoins:
   - {fileID: 0}
   - {fileID: 0}
+  m_Speed: 2
+  m_MaxDistanceToChase: 10
   m_SightAngle: 60
   m_SightLayerMask:
     serializedVersion: 2
@@ -82,7 +85,7 @@ MonoBehaviour:
   m_MaxEarDistance: 3
   m_Life: 50
   m_MaxLife: 50
-  m_LifeBarTransform: {fileID: 0}
+  m_LifeBarTransform: {fileID: 8039836707572163402}
   m_LifeBarElementUI: {fileID: 0}
   m_MeshRenderers:
   - {fileID: 3698094020580224997}
@@ -172,7 +175,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5794700111443081010}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -298,7 +301,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6489010673767139381}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -424,7 +427,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6877411113598297676}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -550,7 +553,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8353482915846062056}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -651,7 +654,7 @@ Transform:
   m_GameObject: {fileID: 8966068236393156929}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

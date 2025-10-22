@@ -20,7 +20,7 @@ public class EnemyController : MonoBehaviour
 
     [Header("Distance")]
     public float m_MinDistanceToAttack = 5.0f;
-    public float m_MinDistanceToPlayer = 2f;
+    public float m_MinDistanceToPlayer = 2.0f;
 
     [Header("Patrol")]
     public List<Transform> m_PatrolPositoins;
@@ -28,6 +28,7 @@ public class EnemyController : MonoBehaviour
 
     [Header("Chase")]
     public float m_Speed = 2f;
+    public float m_MaxDistanceToChase = 15f;
 
     [Header("Hit")]
     HitCollider m_HitCollider;
@@ -125,15 +126,14 @@ public class EnemyController : MonoBehaviour
     void UpdateAlertState()
     {
         //Dar la vuelta 360 grados
-        /*if (SeesPlayer && m_MinDistanceToAttack >= 5)
+        if (SeesPlayer())
         {
             SetChaseState();
         }
-        else if (SeesPlayer && m_MinDistanceToAttack <= 5)
+        else
         {
-            SetAttackState();
+            SetPatrolState();
         }
-        */
     }
     void SetPatrolState()
     {
@@ -148,6 +148,23 @@ public class EnemyController : MonoBehaviour
         if (HearsPlayer())
             SetAlertState();
     }
+    void SetChaseState()
+    {
+        Debug.Log("SetChase");
+        m_State = TState.CHASE;
+    }
+    void UpdateChaseState()
+    {
+        Debug.Log("Chasing");
+        float distance = Vector3.Distance(transform.position, GameManager.GetGameManager().GetPLayer().transform.position);
+        if (distance <= m_MinDistanceToAttack)
+            SetAttackState();
+        else if (distance >= m_MaxDistanceToChase)
+        {
+            SetPatrolState();
+        }
+        SetNextChasePosition();
+    }
     void SetAttackState()
     {
         m_State = TState.ATTACK;
@@ -155,56 +172,45 @@ public class EnemyController : MonoBehaviour
     void UpdateAttackState()
     {
         //Si le pegas un hit se queda en alert, si no te ve despues de esto = patrol, si te ve = chase.
-        if(m_HitCollider != null)
-        {
-            m_HitCollider.Hit();
-            m_State = TState.ALERT;
-
-            if (!SeesPlayer())
-            {
-                m_State = TState.PATROL;
-            }
-            else
-            {
-                m_State = TState.CHASE;
-            }
-            //El player recibe damage
-            GameManager.GetGameManager().GetPLayer().Damage(25);
-        }
-    }
-    void SetChaseState()
-    {
-        m_State = TState.CHASE;
-    }
-    void UpdateChaseState()
-    {
         float distance = Vector3.Distance(transform.position, GameManager.GetGameManager().GetPLayer().transform.position);
-        if (distance > m_MinDistanceToPlayer)
+        if (distance > m_MinDistanceToAttack)
             SetNextChasePosition();
-
-        /*Vector3 direction = GameManager.GetGameManager().GetPLayer().transform.position - transform.position;
-        direction.Normalize();
-
-        float distance = Vector3.Distance(transform.position, GameManager.GetGameManager().GetPLayer().transform.position);
-        if (distance > m_MinDistanceToPlayer)
+        else
         {
-            transform.position += direction * m_Speed * Time.deltaTime;
-            transform.forward = direction;
-        }*/
+            //El player recibe damage
+            Debug.Log("Damaga al Player");
+            GameManager.GetGameManager().GetPLayer().Damage(0);
+        }
     }
     void SetHitState()
     {
         m_State = TState.HIT;
+        m_CurrentTime = 0;
     }
     void UpdateHitState()
     {
-        //While(m_Life > 0)???
-        /*
-        if(ReciveDamage && m_Life > 0)
+        if (m_HitCollider != null)
         {
-            SetHitState()
+            m_HitCollider.Hit();
+            SetAlertState();
+
+            if (!SeesPlayer())
+            {
+                SetPatrolState();
+            }
+            else
+            {
+                float distance = Vector3.Distance(transform.position, GameManager.GetGameManager().GetPLayer().transform.position);
+                if (distance > m_MinDistanceToAttack)
+                    SetChaseState();
+                else
+                {
+                    //El player recibe damage
+                    Debug.Log("Damage al Player");
+                    GameManager.GetGameManager().GetPLayer().Damage(1);
+                }
+            }
         }
-        */
     }
     void SetDieState()
     {
@@ -274,5 +280,7 @@ public class EnemyController : MonoBehaviour
         m_Life -= Damage;
         if (m_Life < 0)
             SetDieState();
+        else
+            SetHitState();
     }
 }
