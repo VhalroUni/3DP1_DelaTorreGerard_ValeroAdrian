@@ -129,12 +129,13 @@ public class EnemyController : MonoBehaviour
     void SetAlertState()
     {
         m_State = TState.ALERT;
+        Debug.Log("Alerta");
     }
     void UpdateAlertState()
     {
         Debug.Log("Me escucha");
         //Dar la vuelta 360 grados
-        transform.Rotate(0f, 360f * Time.deltaTime, 0f);
+        transform.Rotate(0f, 180f * Time.deltaTime, 0f);
         if (SeesPlayer())
         {
             SetChaseState();
@@ -182,11 +183,16 @@ public class EnemyController : MonoBehaviour
     {
         //Si le pegas un hit se queda en alert, si no te ve despues de esto = patrol, si te ve = chase.
         float distance = Vector3.Distance(transform.position, GameManager.GetGameManager().GetPLayer().transform.position);
-        if (distance > m_MinDistanceToAttack)
+        if (distance > m_MinDistanceToAttack && distance <= m_MaxDistanceToChase)
+        {
+            SetChaseState();
             SetNextChasePosition();
+        }
+        else if (distance > m_MaxDistanceToChase)
+            SetPatrolState();
         else
         {
-            if(m_AttackTimer <= 0)
+            if (m_AttackTimer <= 0)
             {
                 //El player recibe damage
                 Debug.Log("Damaga al Player");
@@ -216,7 +222,10 @@ public class EnemyController : MonoBehaviour
             {
                 float distance = Vector3.Distance(transform.position, GameManager.GetGameManager().GetPLayer().transform.position);
                 if (distance > m_MinDistanceToAttack)
+                {
                     SetChaseState();
+                    SetNextChasePosition();
+                }
             }
         }
     }

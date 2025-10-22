@@ -315,22 +315,22 @@ public class PlayerController : MonoBehaviour
 
     public void Damage(int damage)
     {
-        if(m_Shield > 0)
+        m_ShieldDamage = (int)(75f / 100f * damage);
+        m_LifeDamage = (int)(25f / 100f * damage);
+
+        if (m_Shield > 0)
         {
-            //m_ShieldDamage = 75/100 * damage;
-            //m_LifeDamage = 25/100 * damage;
-            m_Shield -= damage;
+            m_Shield -= m_ShieldDamage;
 
             if(m_Shield < 0)
             {
-                m_Life -= damage;
+                m_Life -= m_LifeDamage;
                 m_Shield = 0;
             }
         }
-        else
-        {
-            m_Life -= damage;
-        }
+
+        m_Life -= m_LifeDamage;
+   
 
         if (m_Life < 0)
         {
