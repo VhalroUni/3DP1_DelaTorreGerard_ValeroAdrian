@@ -1,4 +1,3 @@
-using static UnityEditor.Progress;
 
 public class AmmoItem : Item
 {
