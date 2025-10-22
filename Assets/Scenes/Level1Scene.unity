@@ -1361,10 +1361,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1628818542}
     - target: {fileID: 1955151663480405477, guid: 2f591477a23b8c043a53c6ba335594d4, type: 3}
-      propertyPath: m_ReloadTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1955151663480405477, guid: 2f591477a23b8c043a53c6ba335594d4, type: 3}
       propertyPath: m_ShieldText
       value: 
       objectReference: {fileID: 1628818541}
@@ -1372,14 +1368,6 @@ PrefabInstance:
       propertyPath: m_ShootParticles
       value: 
       objectReference: {fileID: 1867256917}
-    - target: {fileID: 1955151663480405477, guid: 2f591477a23b8c043a53c6ba335594d4, type: 3}
-      propertyPath: m_ShootMaxDistance
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1955151663480405477, guid: 2f591477a23b8c043a53c6ba335594d4, type: 3}
-      propertyPath: m_CooldownBetweenShots
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 2860576931173711061, guid: 2f591477a23b8c043a53c6ba335594d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 243.1
@@ -1423,10 +1411,6 @@ PrefabInstance:
     - target: {fileID: 5154629689449907110, guid: 2f591477a23b8c043a53c6ba335594d4, type: 3}
       propertyPath: m_Name
       value: PlayerController
-      objectReference: {fileID: 0}
-    - target: {fileID: 5154629689449907110, guid: 2f591477a23b8c043a53c6ba335594d4, type: 3}
-      propertyPath: m_TagString
-      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

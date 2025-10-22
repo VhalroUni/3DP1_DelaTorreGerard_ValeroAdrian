@@ -118,7 +118,7 @@ MonoBehaviour:
   m_ShootMaxDistance: 100
   m_ShootLayerMask:
     serializedVersion: 2
-    m_Bits: 81
+    m_Bits: 209
   m_ShootParticles: {fileID: 0}
   m_Ammo: 120
   m_TotalMaxAmmo: 120

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6365535222000282862}
   m_Layer: 7
   m_Name: Drone
-  m_TagString: Untagged
+  m_TagString: HitCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,18 +75,20 @@ MonoBehaviour:
   m_PatrolPositoins:
   - {fileID: 0}
   - {fileID: 0}
+  m_AlertTimer: 2
   m_Speed: 2
   m_MaxDistanceToChase: 10
   m_SightAngle: 60
   m_SightLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   m_EyesHeight: 1.8
   m_MaxEarDistance: 3
   m_Life: 50
   m_MaxLife: 50
   m_LifeBarTransform: {fileID: 8039836707572163402}
   m_LifeBarElementUI: {fileID: 0}
+  m_AttackCooldown: 0.3
   m_MeshRenderers:
   - {fileID: 3698094020580224997}
   m_DeadTime: 1.5
