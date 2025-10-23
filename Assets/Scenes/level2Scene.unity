@@ -22569,6 +22569,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6365535222000282862, guid: 7a46d4a25fbf3fc4aba0bf14a357af8b, type: 3}
+      propertyPath: m_ItemDrop
+      value: 
+      objectReference: {fileID: 6988805479235264289, guid: ef15df360939d9f4aab47000b4e707af, type: 3}
+    - target: {fileID: 6365535222000282862, guid: 7a46d4a25fbf3fc4aba0bf14a357af8b, type: 3}
       propertyPath: m_MaxEarDistance
       value: 10
       objectReference: {fileID: 0}
@@ -22590,7 +22594,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6365535222000282862, guid: 7a46d4a25fbf3fc4aba0bf14a357af8b, type: 3}
       propertyPath: m_SightLayerMask.m_Bits
-      value: 4294967295
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6365535222000282862, guid: 7a46d4a25fbf3fc4aba0bf14a357af8b, type: 3}
       propertyPath: m_PatrolPositoins.Array.size

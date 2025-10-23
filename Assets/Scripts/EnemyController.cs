@@ -17,7 +17,6 @@ public class EnemyController : MonoBehaviour
     TState m_State;
     NavMeshAgent m_NavMeshAgent;
     public Transform m_Target;
-    private bool m_StateChanged = false;
 
     [Header("Distance")]
     public float m_MinDistanceToAttack = 5.0f;
@@ -82,15 +81,14 @@ public class EnemyController : MonoBehaviour
     }
     void SetFadeValue(float Pct)
     {
-        foreach(MeshRenderer l_MeshRenderer in m_MeshRenderers)
+        foreach (MeshRenderer l_MeshRenderer in m_MeshRenderers)
         {
-            l_MeshRenderer.sharedMaterial.SetFloat("_Smoothness",  Pct);
-            l_MeshRenderer.sharedMaterial.SetColor("_BaseColor", Color.white*Pct);
+            l_MeshRenderer.sharedMaterial.SetFloat("_Smoothness", Pct);
+            l_MeshRenderer.sharedMaterial.SetColor("_BaseColor", Color.white * Pct);
         }
     }
     private void Update()
     {
-        Debug.Log($"Estado actual: {m_State}");
         if (m_AttackCooldown > 0f)
             m_AttackTimer -= Time.deltaTime;
 
@@ -118,13 +116,12 @@ public class EnemyController : MonoBehaviour
                 UpdateDieState();
                 break;
         }
-        m_StateChanged = false;
         UpdateLifeBar();
     }
 
     void UpdateLifeBar()
     {
-        m_LifeBarElementUI.Show(m_LifeBarTransform.position, m_Life/(float)m_MaxLife);
+        m_LifeBarElementUI.Show(m_LifeBarTransform.position, m_Life / (float)m_MaxLife);
     }
     void SetIdleState()
     {
@@ -168,15 +165,13 @@ public class EnemyController : MonoBehaviour
     {
         if (!m_NavMeshAgent.hasPath && m_NavMeshAgent.pathStatus == NavMeshPathStatus.PathComplete)
             MoveToNextPatrolPosition();
-        if (HearsPlayer() && m_State != TState.CHASE && m_State != TState.ATTACK && m_State != TState.DIE)
+        if (HearsPlayer())
             SetAlertState();
     }
     void SetChaseState()
     {
         Debug.Log("SetChase");
         m_State = TState.CHASE;
-        m_StateChanged = true;
-        SetNextChasePosition();
     }
     void UpdateChaseState()
     {
@@ -227,7 +222,7 @@ public class EnemyController : MonoBehaviour
         {
             Debug.Log("Hit");
             m_HitCollider.Hit();
-            
+
 
             /*if (!SeesPlayer())
             {
@@ -244,7 +239,7 @@ public class EnemyController : MonoBehaviour
             }*/
         }
         m_CurrentTime += Time.deltaTime;
-        if(m_CurrentTime > 0.5f)
+        if (m_CurrentTime > 0.5f)
         {
             SetAlertState();
         }
@@ -253,7 +248,7 @@ public class EnemyController : MonoBehaviour
     {
         m_State = TState.DIE;
         m_CurrentTime = 0.0f;
-        if(m_ItemDrop != null)
+        if (m_ItemDrop != null)
         {
             Vector3 m_DropPosition = transform.position + Vector3.up;
             Instantiate(m_ItemDrop, m_DropPosition, Quaternion.identity);
@@ -269,9 +264,9 @@ public class EnemyController : MonoBehaviour
         }
         */
         m_CurrentTime += Time.deltaTime;
-        float l_Pct=Mathf.Min(1.0f, m_CurrentTime/m_DeadTime);
-        SetFadeValue(1.0f-l_Pct);
-        if(l_Pct==1.0f)
+        float l_Pct = Mathf.Min(1.0f, m_CurrentTime / m_DeadTime);
+        SetFadeValue(1.0f - l_Pct);
+        if (l_Pct == 1.0f)
             gameObject.SetActive(false);
     }
 
