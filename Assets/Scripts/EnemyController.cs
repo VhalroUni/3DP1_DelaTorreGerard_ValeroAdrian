@@ -17,6 +17,7 @@ public class EnemyController : MonoBehaviour
     TState m_State;
     NavMeshAgent m_NavMeshAgent;
     public Transform m_Target;
+    private bool m_StateChanged = false;
 
     [Header("Distance")]
     public float m_MinDistanceToAttack = 5.0f;
@@ -61,6 +62,9 @@ public class EnemyController : MonoBehaviour
     float m_CurrentTime;
     public float m_DeadTime = 1.5f;
 
+    [Header("Loot")]
+    public GameObject m_ItemDrop;
+
     private void Awake()
     {
         m_NavMeshAgent = GetComponent<NavMeshAgent>();
@@ -86,7 +90,8 @@ public class EnemyController : MonoBehaviour
     }
     private void Update()
     {
-        if(m_AttackCooldown > 0f)
+        Debug.Log($"Estado actual: {m_State}");
+        if (m_AttackCooldown > 0f)
             m_AttackTimer -= Time.deltaTime;
 
         switch (m_State)
@@ -113,6 +118,7 @@ public class EnemyController : MonoBehaviour
                 UpdateDieState();
                 break;
         }
+        m_StateChanged = false;
         UpdateLifeBar();
     }
 
@@ -162,13 +168,15 @@ public class EnemyController : MonoBehaviour
     {
         if (!m_NavMeshAgent.hasPath && m_NavMeshAgent.pathStatus == NavMeshPathStatus.PathComplete)
             MoveToNextPatrolPosition();
-        if (HearsPlayer())
+        if (HearsPlayer() && m_State != TState.CHASE && m_State != TState.ATTACK && m_State != TState.DIE)
             SetAlertState();
     }
     void SetChaseState()
     {
         Debug.Log("SetChase");
         m_State = TState.CHASE;
+        m_StateChanged = true;
+        SetNextChasePosition();
     }
     void UpdateChaseState()
     {
@@ -245,6 +253,11 @@ public class EnemyController : MonoBehaviour
     {
         m_State = TState.DIE;
         m_CurrentTime = 0.0f;
+        if(m_ItemDrop != null)
+        {
+            Vector3 m_DropPosition = transform.position + Vector3.up;
+            Instantiate(m_ItemDrop, m_DropPosition, Quaternion.identity);
+        }
     }
     void UpdateDieState()
     {
